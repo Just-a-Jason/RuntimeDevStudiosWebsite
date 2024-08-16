@@ -1,0 +1,46 @@
+@keyframes pulse {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
+
+.BlurImage {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    
+    img {
+        transition: 200ms ease-in-out;
+        object-position: center;
+        object-fit: cover;
+        opacity: 0;
+    }
+
+    &::before {
+        animation: 2.5s pulse infinite;
+        background-color: #ffffff75;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: "";
+    }
+
+    &.loaded {
+        background-image: none !important;
+        img {
+            opacity: 1;
+        }
+        &::before {
+            animation: none;
+            content: none;
+        }
+        
+    }
+}

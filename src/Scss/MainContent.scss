@@ -1,0 +1,23 @@
+.mainContent {
+    justify-content: center;
+    flex-direction: column;
+	align-items: center;
+    position: relative;
+    display: flex;
+    z-index: -2;
+	width: 100%;
+
+    .link {
+        align-items: center;
+        display: flex;
+        text-decoration: underline;
+        font-size: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        z-index: 25;
+        cursor: pointer;
+        svg {
+            margin-left: 20px;
+        }
+    }
+}

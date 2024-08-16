@@ -1,0 +1,20 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ContentLoader {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    margin-top: 20px;
+
+    img {
+        animation: spin 2s linear infinite;
+    }
+}

@@ -1,0 +1,35 @@
+.tiles {
+	justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    width: 600px;
+    
+    .tile {
+        border:dashed 2px #464242;
+        justify-content: center;
+        filter: brightness(0.2);
+        align-items: center;
+        transition: 0.2s;
+        display: flex;
+        height: 100px;
+        width: 100px;
+        margin: 2px;
+    
+        &.active  {
+            border-color: #fff;
+            filter: brightness(1);
+            
+            img {
+                filter:drop-shadow(2px 2px 40px #fff);
+                transform: scale(1.1);
+            }
+        }
+    
+        img {
+            transition: 0.2s;
+            height: 80px;
+            width: 80px;
+        }
+    }
+}

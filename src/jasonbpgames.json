@@ -1,0 +1,34 @@
+{
+  "blogs": [
+    {
+      "image": "https://avatars.githubusercontent.com/u/88512392?v=4",
+      "title": "Animating characters!",
+      "author": "Jason.json",
+      "date": "02.02.2024",
+      "description":"I've added a new banner on the top of the page. Now I am animating characters for the game!"
+    },
+    {
+      "image": "https://avatars.githubusercontent.com/u/88512392?v=4",
+      "title": "Image lazy loading",
+      "author": "Jason.json",
+      "date": "27.02.2024",
+      "description":"Hi just a quick update. I am working on tha game and I've added image-lazy loading to the website. It displays low-quality photos while loading them, sooo... Anyway I am working on 3D character controller and I am going to buy a program for animation called: \"Smack Studio\". It is easy to make 3D animation for sprites you can check it out if you want. It's just a very cool tool to make 3D animations with 2D sprites. That's all for now stay tuned folks! 🐻"
+    },
+    {
+      "image": "https://avatars.githubusercontent.com/u/88512392?v=4",
+      "title": "The first day",
+      "author": "Jason.json",
+      "date": "25.02.2024",
+      "description":"I've finished updating my website and I'm starting with Unity now. Keep an eye out for updates! 😊"
+    },
+    {
+      "image": "https://avatars.githubusercontent.com/u/88512392?v=4",
+      "title": "The FNAF Maze Project: A Journey from 2D to 3D",
+      "author": "Jason.json",
+      "date": "24.02.2024",
+      "description": "I am thrilled to collaborate with my team on this extraordinary project. Having previously worked with Unity, I am confident that we can elevate this game to remarkable heights! Our vision is to design the game in 3D, offering a basic 2D top-down view, and providing the option to play in both top-down (2D) and first-person (3D) modes. Currently, the game is developed in TypeScript, but we plan to transition to Unity shortly. As soon as the website is complete, we'll be on a roll. 😎"
+    }
+  ],
+  "pricing":[],
+  "progress": 35
+}

@@ -1,0 +1,61 @@
+$bar-height: 30px;
+$offset: 40px;
+$startOffset: -$offset;
+
+@keyframes blink {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.ProgressBar {
+    // background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100px;
+    width: 100%;
+    
+    .bar {
+        border-radius: 20px;
+        background-color: #222;
+        height: $bar-height;
+        position: relative;
+        overflow: hidden;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        border: solid 5px #1B1D23;
+
+        .fill {
+            background: #0f0;
+            animation: blink 1s infinite;
+            height: $bar-height;
+
+            animation: blink 2s infinite;
+        }
+
+        p {
+            position: absolute;
+            right: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .separator {
+            background-color: #1B1D23;
+            height: $bar-height;
+            position: absolute;
+            width: 5px;
+    
+            @for $i from 1 through 21 {
+                $startOffset: $startOffset + $offset;
+                &:nth-child(#{$i}) {
+                    left: $startOffset;
+                }
+            }
+        }
+    }
+}

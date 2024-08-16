@@ -1,0 +1,21 @@
+.Team {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-size: 100px;
+    position: relative;
+
+    &::before {
+        content: "";
+        background: url('Sprites/PizzeriaWall.webp');
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        filter: brightness(0.5) saturate(200%);
+        background-size: 150px;
+        z-index: -10;
+    }
+}
