@@ -1,10 +1,14 @@
 import ContactButton from "./ContactButton";
 
-const Contact = () => {
+interface Props {
+  showPopup: () => void;
+}
+
+const Contact = ({ showPopup }: Props) => {
   return (
     <div className="contact-us">
       <ContactButton type="E-Mail" />
-      <ContactButton type="Discord" />
+      <ContactButton type="Discord" onClick={showPopup} />
     </div>
   );
 };

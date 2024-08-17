@@ -1,39 +1,32 @@
 import { useRef, useState, useEffect } from "react";
-import AboutProject from "../Components/AboutProject";
 import ContentLoader from "../Components/ContentLoader";
-import MainContent from "../Components/MainContent";
-import SocialLink from "../Components/SocialLink";
-import WaveOverlay from "../Components/WaveOverlay";
 import { DataObject } from "../Interfaces/DataObject";
+import AboutProject from "../Components/AboutProject";
+import MainContent from "../Components/MainContent";
+import WaveOverlay from "../Components/WaveOverlay";
+import { Character, JSON_END_POINT } from "../Utils/Constants";
+import SocialLink from "../Components/SocialLink";
 import Contact from "../Components/Contact";
+import Footer from "../Components/Footer";
 import Blogs from "../Components/Blogs";
 import Card from "../Components/Card";
-import Footer from "../Components/Footer";
+import { CopyIndicator } from "../Components/CopyIndicator";
 
 const HomePage = () => {
   const arrow = useRef<HTMLDivElement>(null);
+
   const [data, setData] = useState<DataObject | null>(null);
 
   const randomIcon = (): void => {
-    const characters = [
-      "William",
-      "GoldenFreddy",
-      "Cupcake",
-      "Springtrap",
-      "Foxy",
-      "NightmareFoxy",
-      "Freddy",
-      "Chica",
-      "Bonnie",
-    ];
+    const icon = Character.random();
 
-    const icon = characters[Math.floor(Math.random() * characters.length)];
     const webIcon = document.querySelector(
       "link[rel=icon]"
     )! as HTMLLinkElement;
-    webIcon.href = `Sprites/${icon}.webp`;
+    webIcon.href = icon;
   };
 
+  const [popup, setPopup] = useState(false);
   useEffect(() => {
     let ambient: HTMLAudioElement | null = new Audio("sounds/ambient.ogg");
     ambient.muted = true;
@@ -52,13 +45,10 @@ const HomePage = () => {
 
     document.addEventListener("click", playAudio);
 
-    fetch(
-      "https://raw.githubusercontent.com/Just-a-Jason/NostalgiaNexusData/main/jasonbpgames.json",
-      {
-        method: "GET",
-        signal: signal,
-      }
-    )
+    fetch(JSON_END_POINT, {
+      method: "GET",
+      signal: signal,
+    })
       .then((data) => data.json())
       .then((data: DataObject) => setData(data))
       .catch((err) => err);
@@ -95,17 +85,17 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="arrow" ref={arrow}>
+      <section className="arrow" ref={arrow}>
         <svg width="60px" height="60px" viewBox="0 0 24 24">
           <path
             fill="white"
             d="M13 18h-2v-8l-3.5 3.5l-1.42-1.42L12 6.16l5.92 5.92l-1.42 1.42L13 10zM12 2a10 10 0 0 1 10 10a10 10 0 0 1-10 10A10 10 0 0 1 2 12A10 10 0 0 1 12 2m0 2a8 8 0 0 0-8 8a8 8 0 0 0 8 8a8 8 0 0 0 8-8a8 8 0 0 0-8-8"
           />
         </svg>
-      </div>
+      </section>
 
       <MainContent />
-      <div className="Team">
+      <section className="Team">
         <WaveOverlay type="top" />
 
         <h1 id="team">--- OUR TEAM ---</h1>
@@ -161,14 +151,15 @@ const HomePage = () => {
           <SocialLink type="Github" to="https://github.com/Kuguar2" />
         </Card>
         <WaveOverlay type="bottom" />
-      </div>
+      </section>
 
       <h1 id="about-project" style={{ marginTop: "120px" }}>
         --- ABOUT PROJECT ---
       </h1>
+
       <AboutProject progress={(data && data.progress) || 0} />
 
-      <div className="BlogSection">
+      <section className="BlogSection">
         <WaveOverlay type="top" />
         <h1 id="blog" style={{ marginTop: "120px" }}>
           --- BLOG ---
@@ -179,14 +170,24 @@ const HomePage = () => {
             <p>There is nothing to display here...</p>
           )) || <Blogs blogs={data!.blogs} />}
         <WaveOverlay type="bottom" />
-      </div>
-      <div className="ContactSection">
+      </section>
+
+      <section className="ContactSection">
         <h1 id="contact" style={{ marginTop: "120px" }}>
           --- CONTACT US ☎️ ---
         </h1>
-        <Contact />
+        <Contact
+          showPopup={() => {
+            if (popup) return;
+
+            setTimeout(() => setPopup(false), 1000);
+            setPopup(true);
+          }}
+        />
         <Footer />
-      </div>
+
+        {popup && <CopyIndicator />}
+      </section>
     </>
   );
 };

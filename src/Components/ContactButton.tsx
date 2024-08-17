@@ -1,8 +1,9 @@
 interface ContactButtonProps {
   type: "Discord" | "E-Mail";
+  onClick?: () => void;
 }
 
-const ContactButton = ({ type }: ContactButtonProps) => {
+const ContactButton = ({ type, onClick }: ContactButtonProps) => {
   return (
     (type === "E-Mail" && (
       <h3 className="contact-red">
@@ -18,6 +19,7 @@ const ContactButton = ({ type }: ContactButtonProps) => {
         className="contact-blue"
         title="Click me to copy!"
         onClick={(e) => {
+          onClick?.();
           navigator.clipboard.writeText(
             e.currentTarget.innerText.split("Discord:")[1]
           );
